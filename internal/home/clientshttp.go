@@ -7,14 +7,14 @@ import (
 	"net/http"
 	"net/netip"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/client"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/safesearch"
-	"github.com/AdguardTeam/AdGuardHome/internal/schedule"
-	"github.com/AdguardTeam/AdGuardHome/internal/whois"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghalg"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
+	"github.com/fcchbjm/AdGuardHome/internal/client"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering/safesearch"
+	"github.com/fcchbjm/AdGuardHome/internal/schedule"
+	"github.com/fcchbjm/AdGuardHome/internal/whois"
 )
 
 // clientJSON is a common structure used by several handlers to deal with

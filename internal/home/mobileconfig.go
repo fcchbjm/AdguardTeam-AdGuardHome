@@ -9,11 +9,11 @@ import (
 	"path"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/client"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/httphdr"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
+	"github.com/fcchbjm/AdGuardHome/internal/client"
 	"github.com/google/uuid"
 	"howett.net/plist"
 )

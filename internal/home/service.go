@@ -7,13 +7,13 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/ossvc"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
 	"github.com/AdguardTeam/golibs/osutil/executil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
+	"github.com/fcchbjm/AdGuardHome/internal/ossvc"
+	"github.com/fcchbjm/AdGuardHome/internal/version"
 	"github.com/kardianos/service"
 )
 

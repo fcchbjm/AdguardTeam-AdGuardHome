@@ -6,11 +6,11 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtest"
-	"github.com/AdguardTeam/AdGuardHome/internal/updater"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghalg"
+	"github.com/fcchbjm/AdGuardHome/internal/aghtest"
+	"github.com/fcchbjm/AdGuardHome/internal/updater"
+	"github.com/fcchbjm/AdGuardHome/internal/version"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

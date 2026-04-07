@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 )
 

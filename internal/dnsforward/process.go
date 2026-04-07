@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/netutil"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )

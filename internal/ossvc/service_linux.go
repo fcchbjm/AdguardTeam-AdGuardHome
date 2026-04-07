@@ -11,8 +11,8 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
 	"github.com/AdguardTeam/golibs/osutil/executil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
 	"github.com/kardianos/service"
 )
 

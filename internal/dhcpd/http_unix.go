@@ -15,15 +15,15 @@ import (
 	"slices"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpsvc"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/log"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/osutil/executil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghalg"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
+	"github.com/fcchbjm/AdGuardHome/internal/dhcpsvc"
 )
 
 type v4ServerConfJSON struct {

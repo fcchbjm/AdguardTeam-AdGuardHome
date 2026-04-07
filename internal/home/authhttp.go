@@ -14,8 +14,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghuser"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/httphdr"
 	"github.com/AdguardTeam/golibs/log"
@@ -24,6 +22,8 @@ import (
 	"github.com/AdguardTeam/golibs/netutil/httputil"
 	"github.com/AdguardTeam/golibs/timeutil"
 	"github.com/AdguardTeam/golibs/validate"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
+	"github.com/fcchbjm/AdGuardHome/internal/aghuser"
 )
 
 // cookieTTL is the time-to-live of the session cookie.

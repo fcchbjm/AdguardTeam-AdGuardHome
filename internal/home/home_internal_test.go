@@ -6,11 +6,11 @@ import (
 	"net/netip"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/AdGuardHome/internal/agh"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
 	"github.com/stretchr/testify/require"
 )
 

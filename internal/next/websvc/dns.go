@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"net/netip"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/next/jsonpatch"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
+	"github.com/fcchbjm/AdGuardHome/internal/next/jsonpatch"
 	"github.com/fcchbjm/dnsproxy/proxy"
 )
 

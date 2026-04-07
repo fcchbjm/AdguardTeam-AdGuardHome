@@ -13,10 +13,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/osutil/executil"
 	"github.com/AdguardTeam/golibs/stringutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
 )
 
 func newARPDB(logger *slog.Logger, cmdCons executil.CommandConstructor) (arp *arpdbs) {

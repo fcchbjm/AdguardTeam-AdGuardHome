@@ -3,7 +3,7 @@
 package ossvc
 
 import (
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
 	"github.com/kardianos/service"
 )
 

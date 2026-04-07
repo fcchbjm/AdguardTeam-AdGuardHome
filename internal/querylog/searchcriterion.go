@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/stringutil"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 )
 
 type criterionType int

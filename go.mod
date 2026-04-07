@@ -1,4 +1,4 @@
-module github.com/AdguardTeam/AdGuardHome
+module github.com/fcchbjm/AdGuardHome
 
 go 1.26.1
 

@@ -6,10 +6,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/querylog"
-	"github.com/AdguardTeam/AdGuardHome/internal/stats"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
+	"github.com/fcchbjm/AdGuardHome/internal/querylog"
+	"github.com/fcchbjm/AdGuardHome/internal/stats"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )

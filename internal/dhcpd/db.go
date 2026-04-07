@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpsvc"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/log"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
+	"github.com/fcchbjm/AdGuardHome/internal/dhcpsvc"
 	"github.com/google/renameio/v2/maybe"
 )
 

@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/rulelist"
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
 	"github.com/AdguardTeam/golibs/testutil"
 	"github.com/AdguardTeam/urlfilter/rules"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering/rulelist"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

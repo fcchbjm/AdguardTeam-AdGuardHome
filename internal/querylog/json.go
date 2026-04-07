@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/miekg/dns"
 	"golang.org/x/net/idna"
 )

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/netip"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/urlfilter/rules"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )

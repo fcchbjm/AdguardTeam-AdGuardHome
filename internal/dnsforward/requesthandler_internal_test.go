@@ -6,11 +6,11 @@ import (
 	"net/netip"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtest"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghtest"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/miekg/dns"

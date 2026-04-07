@@ -8,10 +8,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/c2h5oh/datasize"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
 )
 
 // flushLogBuffer flushes the current buffer to file and resets the current

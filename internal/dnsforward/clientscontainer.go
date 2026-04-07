@@ -3,7 +3,7 @@ package dnsforward
 import (
 	"net/netip"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/client"
+	"github.com/fcchbjm/AdGuardHome/internal/client"
 	"github.com/fcchbjm/dnsproxy/proxy"
 )
 

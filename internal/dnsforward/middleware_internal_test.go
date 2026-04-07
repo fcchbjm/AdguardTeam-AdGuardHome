@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtest"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghtest"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 	"github.com/stretchr/testify/assert"
