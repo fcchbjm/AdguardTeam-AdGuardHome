@@ -1,0 +1,108 @@
+# 仅在 fork 仓库自动构建并发布 GitHub Release，与官方 AdguardTeam/AdGuardHome CI 隔离。
+#
+# 触发：推送符合 SemVer 的 tag（v*，例如 v1.0.0）。
+# 请将两个 job 里的 github.repository 比较值改为你自己的「所有者/仓库名」。
+#
+# 官方仓库即使合并本文件也不会执行发布（repository 判断为假）；官方仍使用原有 build.yml 等流程。
+
+'name': 'release (fork)'
+
+'env':
+  'GO_VERSION': '1.26.2'
+  'NODE_VERSION': '20'
+
+'on':
+  'push':
+    'tags':
+    - 'v*'
+
+'permissions':
+  'contents': 'write'
+
+'jobs':
+  'test':
+    # 改为你的 fork，例如 'fcchbjm/AdGuardHome'
+    'if': "github.repository == 'fcchbjm/AdGuardHome'"
+    'runs-on': 'ubuntu-latest'
+    'env':
+      'GO111MODULE': 'on'
+      'GOPROXY': 'https://goproxy.cn|direct'
+    'steps':
+    - 'name': 'Checkout'
+      'uses': 'actions/checkout@v4'
+      'with':
+        'fetch-depth': 0
+    - 'name': 'Set up Go'
+      'uses': 'actions/setup-go@v5'
+      'with':
+        'go-version': '${{ env.GO_VERSION }}'
+    - 'name': 'Set up Node'
+      'uses': 'actions/setup-node@v4'
+      'with':
+        'node-version': '${{ env.NODE_VERSION }}'
+    - 'name': 'Set up Go modules cache'
+      'uses': 'actions/cache@v4'
+      'with':
+        'path': '~/go/pkg/mod'
+        'key': "${{ runner.os }}-go-${{ hashFiles('go.sum') }}"
+        'restore-keys': '${{ runner.os }}-go-'
+    - 'name': 'Set up npm cache'
+      'uses': 'actions/cache@v4'
+      'with':
+        'path': '~/.npm'
+        'key': "${{ runner.os }}-node-${{ hashFiles('client/package-lock.json') }}"
+        'restore-keys': '${{ runner.os }}-node-'
+    - 'name': 'Run tests'
+      'run': 'make VERBOSE=1 deps test'
+
+  'release':
+    'if': "github.repository == 'fcchbjm/AdGuardHome'"
+    'runs-on': 'ubuntu-latest'
+    'needs': 'test'
+    'env':
+      'GO111MODULE': 'on'
+      'GOPROXY': 'https://goproxy.cn|direct'
+    'steps':
+    - 'name': 'Checkout'
+      'uses': 'actions/checkout@v4'
+      'with':
+        'fetch-depth': 0
+    - 'name': 'Set up Go'
+      'uses': 'actions/setup-go@v5'
+      'with':
+        'go-version': '${{ env.GO_VERSION }}'
+    - 'name': 'Set up Node'
+      'uses': 'actions/setup-node@v4'
+      'with':
+        'node-version': '${{ env.NODE_VERSION }}'
+    - 'name': 'Set up Go modules cache'
+      'uses': 'actions/cache@v4'
+      'with':
+        'path': '~/go/pkg/mod'
+        'key': "${{ runner.os }}-go-${{ hashFiles('go.sum') }}"
+        'restore-keys': '${{ runner.os }}-go-'
+    - 'name': 'Set up npm cache'
+      'uses': 'actions/cache@v4'
+      'with':
+        'path': '~/.npm'
+        'key': "${{ runner.os }}-node-${{ hashFiles('client/package-lock.json') }}"
+        'restore-keys': '${{ runner.os }}-node-'
+    # SIGN=0：跳过官方发行链中的 GPG 分离签名与 Windows 可执行文件签名（需 GPG_KEY、
+    # SIGNER_API_KEY 等）。版本号仍由 go-build 的 -ldflags 写入二进制，与是否签名无关。
+    - 'name': 'Build release archives'
+      'run': >
+        make SIGN=0 VERBOSE=1 CHANNEL=release
+        deps build-release
+    - 'name': 'Publish GitHub Release'
+      'uses': 'softprops/action-gh-release@v2'
+      'with':
+        'tag_name': '${{ github.ref_name }}'
+        'name': '${{ github.ref_name }}'
+        'generate_release_notes': true
+        'files': |
+          dist/*.zip
+          dist/*.tar.gz
+          dist/checksums.txt
+          dist/version.txt
+          dist/version.json
+          dist/AdGuardHome_frontend.tar.gz

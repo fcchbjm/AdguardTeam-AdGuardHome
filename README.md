@@ -3,8 +3,7 @@
 这是[AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome) 的fork版本，名为[fcchbjm/AdGuardHome](https://github.com/fcchbjm/AdGuardHome)
 
 主要修改如下
- - 新增 TLS 专用超时配置
- - 为 TCP 连接启用 Keep-Alive 机制
+ - 优化网络连接，具体修改请看[fcchbjm/dnsproxy](https://github.com/fcchbjm/dnsproxy)
  - 更改模块名以方便构建并与官方名称相区别
 
 以下是官方README.md内容

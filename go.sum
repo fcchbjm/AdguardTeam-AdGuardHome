@@ -39,8 +39,8 @@ github.com/digineo/go-ipset/v2 v2.2.1 h1:k6skY+0fMqeUjjeWO/m5OuWPSZUAn7AucHMnQ1M
 github.com/digineo/go-ipset/v2 v2.2.1/go.mod h1:wBsNzJlZlABHUITkesrggFnZQtgW5wkqw1uo8Qxe0VU=
 github.com/dnaeon/go-vcr v1.2.0 h1:zHCHvJYTMh1N7xnV7zf1m1GPBF9Ad0Jk/whtQ1663qI=
 github.com/dnaeon/go-vcr v1.2.0/go.mod h1:R4UdLID7HZT3taECzJs4YgbbH6PIGXB6W/sc5OLb6RQ=
-github.com/fcchbjm/dnsproxy v0.81.2 h1:B+bHauUz2rnNkbM7lroFm/TAk53bwrKmzOiw14exKAU=
-github.com/fcchbjm/dnsproxy v0.81.2/go.mod h1:qSolJAM8fyM045MJosFVR5TW8/fncnjNvow0MpizTDM=
+github.com/fcchbjm/dnsproxy v0.81.3 h1:L+V3a0qcozc+OG3JEDD5WIc8Eeg61crjahW4+fOjteo=
+github.com/fcchbjm/dnsproxy v0.81.3/go.mod h1:qSolJAM8fyM045MJosFVR5TW8/fncnjNvow0MpizTDM=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/fsnotify/fsnotify v1.8.0 h1:dAwr6QBTBZIkG8roQaJjGof0pp0EeF+tNV7YBP3F/8M=

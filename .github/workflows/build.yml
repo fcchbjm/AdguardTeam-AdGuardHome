@@ -63,7 +63,9 @@
         'token': '${{ secrets.CODECOV_TOKEN }}'
         'file': './coverage.txt'
 
+  # 仅在官方主仓库跑快照构建；fork 使用独立工作流发布（见 release-fcchbjm.yml），避免重复占用 CI。
   'build-release':
+    'if': "github.repository == 'AdguardTeam/AdGuardHome'"
     'runs-on': 'ubuntu-latest'
     'needs': 'test'
     'steps':

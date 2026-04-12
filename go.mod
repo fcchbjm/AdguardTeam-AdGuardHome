@@ -10,7 +10,7 @@ require (
 	github.com/bluele/gcache v0.0.2
 	github.com/c2h5oh/datasize v0.0.0-20231215233829-aa82cc1e6500
 	github.com/digineo/go-ipset/v2 v2.2.1
-	github.com/fcchbjm/dnsproxy v0.81.2
+	github.com/fcchbjm/dnsproxy v0.81.3
 	// TODO(e.burkov): Update to the latest version when
 	// github.com/fsnotify/fsnotify/issues/727 is fixed.
 	github.com/fsnotify/fsnotify v1.8.0
