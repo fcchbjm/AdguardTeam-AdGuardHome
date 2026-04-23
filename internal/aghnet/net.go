@@ -14,11 +14,11 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/osutil"
 	"github.com/AdguardTeam/golibs/osutil/executil"
+	"github.com/fcchbjm/dnsproxy/upstream"
 )
 
 // DialContextFunc is the semantic alias for dialing functions, such as

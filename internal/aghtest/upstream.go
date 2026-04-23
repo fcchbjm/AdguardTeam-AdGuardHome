@@ -8,8 +8,8 @@ import (
 	"net/netip"
 	"strings"
 
-	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/errors"
+	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/miekg/dns"
 )
 

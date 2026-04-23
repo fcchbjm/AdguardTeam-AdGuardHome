@@ -9,8 +9,8 @@ import (
 	"strings"
 
 	"github.com/AdguardTeam/AdGuardHome/internal/client"
-	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/AdguardTeam/golibs/netutil"
+	"github.com/fcchbjm/dnsproxy/proxy"
 )
 
 // clientIDFromClientServerName extracts and validates a ClientID.  hostSrvName

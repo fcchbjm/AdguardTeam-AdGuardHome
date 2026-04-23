@@ -8,10 +8,10 @@ import (
 	"time"
 
 	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/fcchbjm/dnsproxy/proxy"
-	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/stringutil"
+	"github.com/fcchbjm/dnsproxy/proxy"
+	"github.com/fcchbjm/dnsproxy/upstream"
 )
 
 // newBootstrap returns a bootstrap resolver based on the configuration of s.

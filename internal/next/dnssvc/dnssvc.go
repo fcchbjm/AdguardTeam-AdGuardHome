@@ -16,12 +16,12 @@ import (
 	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
 	"github.com/AdguardTeam/AdGuardHome/internal/aghslog"
 	"github.com/AdguardTeam/AdGuardHome/internal/next/agh"
-	"github.com/fcchbjm/dnsproxy/proxy"
-	"github.com/fcchbjm/dnsproxy/ratelimit"
-	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil"
+	"github.com/fcchbjm/dnsproxy/proxy"
+	"github.com/fcchbjm/dnsproxy/ratelimit"
+	"github.com/fcchbjm/dnsproxy/upstream"
 )
 
 // Service is the AdGuard Home DNS service.  A nil *Service is a valid

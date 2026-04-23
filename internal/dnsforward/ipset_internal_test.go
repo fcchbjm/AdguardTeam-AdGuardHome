@@ -5,8 +5,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 	"github.com/stretchr/testify/assert"
 )

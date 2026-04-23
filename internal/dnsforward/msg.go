@@ -7,9 +7,9 @@ import (
 	"slices"
 
 	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/urlfilter/rules"
+	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )
 
