@@ -110,7 +110,7 @@
         'VERSION': '${{ github.ref_name }}'
       'run': >-
         make -e SIGN=0 VERBOSE=1 CHANNEL=release
-        DOCKER_IMAGE_NAME=ghcr.io/${{ github.repository }}
+        DOCKER_IMAGE_NAME=ghcr.io/fcchbjm/adguardhome
         DOCKER_PUSH=1 build-docker
     - 'name': 'Publish GitHub Release'
       'uses': 'softprops/action-gh-release@v2'
