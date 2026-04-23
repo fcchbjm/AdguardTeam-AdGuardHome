@@ -4,7 +4,7 @@ import (
 	"net/netip"
 
 	"github.com/AdguardTeam/AdGuardHome/internal/client"
-	"github.com/AdguardTeam/dnsproxy/proxy"
+	"github.com/fcchbjm/dnsproxy/proxy"
 )
 
 // ClientsContainer provides information about preconfigured DNS clients.
