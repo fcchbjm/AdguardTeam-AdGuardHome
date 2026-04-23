@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AdguardTeam/dnsproxy/upstream"
+	"github.com/fcchbjm/dnsproxy/upstream"
 	"github.com/AdguardTeam/golibs/testutil"
 	"github.com/miekg/dns"
 	"github.com/stretchr/testify/assert"
@@ -139,7 +139,7 @@ func TestUpstreamConfigValidator(t *testing.T) {
 			"This is a very long line.  It will cause a parsing error and will be truncated here.",
 		},
 		want: map[string]string{
-			"This is a very long line.  It will cause a parsing error and will be truncated …": "upstream_dns 1: parsing error",
+			"This is a very long line.  It will cause a parsing error and will be truncated .": "upstream_dns 1: parsing error",
 		},
 	}}
 

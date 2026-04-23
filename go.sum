@@ -4,8 +4,6 @@ cloud.google.com/go/auth v0.20.0 h1:kXTssoVb4azsVDoUiF8KvxAqrsQcQtB53DcSgta74CA=
 cloud.google.com/go/auth v0.20.0/go.mod h1:942/yi/itH1SsmpyrbnTMDgGfdy2BUqIKyd0cyYLc5Q=
 cloud.google.com/go/compute/metadata v0.9.0 h1:pDUj4QMoPejqq20dK0Pg2N4yG9zIkYGdBtwLoEkH9Zs=
 cloud.google.com/go/compute/metadata v0.9.0/go.mod h1:E0bWwX5wTnLPedCKqk3pJmVgCBSM6qQI1yTBdEb3C10=
-github.com/AdguardTeam/dnsproxy v0.81.1 h1:LM0JYsm3tMRVbJAtjbPcZ9vVmWV9NDmpb+ZsW8I/apU=
-github.com/AdguardTeam/dnsproxy v0.81.1/go.mod h1:5lTCQqVQ8Kt4KnTOmdV0Ab3k58KZFOazupVfXJezwq8=
 github.com/AdguardTeam/golibs v0.35.11 h1:LooiyPNtsfv32reFz4qD8KpWQm9jIFuPwHxHyVgtaRg=
 github.com/AdguardTeam/golibs v0.35.11/go.mod h1:wBe9Vgrcn6M4T7p7z/vnRZANLzVO72myRggnCKBx+sQ=
 github.com/AdguardTeam/urlfilter v0.23.2 h1:EiS/PQZO/X2S6cduFW6BBoRLyjd6SqZj1ZiFbU1KaFE=
@@ -130,7 +128,7 @@ github.com/mdlayher/socket v0.6.0 h1:ScZPaAGyO1icQnbFrhPM8mnXyMu9qukC1K4ZoM2IQKU
 github.com/mdlayher/socket v0.6.0/go.mod h1:q7vozUAnxSqnjHc12Fik5yUKIzfZ8ITCfMkhOtE9z18=
 github.com/miekg/dns v1.1.72 h1:vhmr+TF2A3tuoGNkLDFK9zi36F2LS+hKTRW0Uf8kbzI=
 github.com/miekg/dns v1.1.72/go.mod h1:+EuEPhdHOsfk6Wk5TT2CzssZdqkmFhf8r+aVyDEToIs=
-github.com/onsi/ginkgo/v2 v2.28.1 h1:S4hj+HbZp40fNKuLUQOYLDgZLwNUVn19N3Atb98NCyI=
+github.com/onsi/ginkgo/v2 v2.28.1 h1:Nz/+tkxBPOeZARWdftfNJ5K2XfaMhXaHAAuA77lWyCc=
 github.com/onsi/ginkgo/v2 v2.28.1/go.mod h1:CLtbVInNckU3/+gC8LzkGUb9oF+e8W8TdUsxPwvdOgE=
 github.com/onsi/gomega v1.39.1 h1:1IJLAad4zjPn2PsnhH70V4DKRFlrCzGBNrNaru+Vf28=
 github.com/onsi/gomega v1.39.1/go.mod h1:hL6yVALoTOxeWudERyfppUcZXjMwIMLnuSfruD2lcfg=

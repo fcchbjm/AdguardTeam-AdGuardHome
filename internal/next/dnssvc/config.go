@@ -5,7 +5,7 @@ import (
 	"net/netip"
 	"time"
 
-	"github.com/AdguardTeam/dnsproxy/proxy"
+	"github.com/fcchbjm/dnsproxy/proxy"
 )
 
 // Config is the AdGuard Home DNS service configuration structure.
