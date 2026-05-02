@@ -849,8 +849,11 @@ func TestServerCustomClientUpstream(t *testing.T) {
 
 	addr := s.dnsProxy.Addr(proxy.ProtoUDP).String()
 
-	// Send test request.
+	// Send test request.  EDNS0 + DO is required for caching when the proxy has
+	// DNSSEC disabled (dnsproxy v0.81.9+); otherwise cacheWorks stays false and
+	// the custom upstream cache is bypassed.
 	req := createTestMessage("host.")
+	req.SetEdns0(dns.DefaultMsgSize, true)
 
 	reply, err := dns.Exchange(req, addr)
 	require.NoError(t, err)
