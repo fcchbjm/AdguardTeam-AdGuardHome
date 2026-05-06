@@ -85,6 +85,13 @@ if [ "${GOARM:-}" != '' ]; then
 elif [ "${GOMIPS:-}" != '' ]; then
 	ldflags="${ldflags} -X ${version_pkg}.gomips=${GOMIPS}"
 fi
+
+# Allow forks/CI to bake the default version-check URL into the binary via
+# UPDATE_INDEX_URL.  Empty means upstream default (static.adtidy.org).
+if [ "${UPDATE_INDEX_URL:-}" != '' ]; then
+	updater_pkg='github.com/AdguardTeam/AdGuardHome/internal/updater'
+	ldflags="${ldflags} -X ${updater_pkg}.defaultVersionURLOverride=${UPDATE_INDEX_URL}"
+fi
 readonly ldflags
 
 # Allow users to limit the build's parallelism.

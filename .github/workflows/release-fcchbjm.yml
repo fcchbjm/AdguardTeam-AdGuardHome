@@ -94,6 +94,9 @@
     - 'name': 'Build release archives'
       'env':
         'VERSION': '${{ github.ref_name }}'
+        'VERSION_DOWNLOAD_URL': 'https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}'
+        'ANNOUNCEMENT_URL': 'https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }}'
+        'UPDATE_INDEX_URL': 'https://github.com/${{ github.repository }}/releases/latest/download/version.json'
       'run': 'make -e SIGN=0 VERBOSE=1 CHANNEL=release deps build-release'
     - 'name': 'Set up QEMU'
       'uses': 'docker/setup-qemu-action@v3'

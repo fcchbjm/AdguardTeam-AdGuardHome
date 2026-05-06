@@ -70,8 +70,24 @@ type Updater struct {
 	prevCheckResult VersionInfo
 }
 
+// defaultVersionURLOverride may be set at build time via -ldflags
+//
+//	-X 'github.com/AdguardTeam/AdGuardHome/internal/updater.defaultVersionURLOverride=https://...'
+//
+// so that fork builds can point at their own version.json without a config
+// change.  When empty or invalid, [DefaultVersionURL] returns the upstream
+// default at static.adtidy.org.
+var defaultVersionURLOverride string
+
 // DefaultVersionURL returns the default URL for the version announcement.
 func DefaultVersionURL() *url.URL {
+	if defaultVersionURLOverride != "" {
+		u, err := url.Parse(defaultVersionURLOverride)
+		if err == nil && urlutil.ValidateHTTPURL(u) == nil {
+			return u
+		}
+	}
+
 	return &url.URL{
 		Scheme: urlutil.SchemeHTTPS,
 		Host:   "static.adtidy.org",
