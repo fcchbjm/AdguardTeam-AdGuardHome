@@ -1,20 +1,20 @@
 # fcchbjm/AdGuardHome
 
-Language: English | [中文](README_zh.md)
+语言：[English](README.md) | 中文
 
-This repository is based on the upstream project [AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome).
+本仓库基于上游项目 [AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome)。
 
-Key changes in this fork
+主要修改如下
 
-- DNS forwarding uses [`github.com/fcchbjm/dnsproxy`](https://github.com/fcchbjm/dnsproxy) instead of [`github.com/AdguardTeam/dnsproxy`](https://github.com/AdguardTeam/dnsproxy). See that repo for TLS/TCP tuning, keep-alive, TFO, TLS resumption, inbound PPv2, and related fixes.
-- **PPv2 (DNS-over-TCP / DoT)** in YAML: `dns.tcp-proxy-protocol-v2`, `dns.tls-proxy-protocol-v2`, `dns.trusted_proxies`. Strict on/off semantics; DoT order: PPv2 → TLS → DNS framing.
-- **Releases & updates**: when you push a **`v*`** tag, [this repo’s GitHub Actions](.github/workflows/release-fcchbjm.yml) publishes builds whose **`version.json`** download/announcement URLs default to **this repo’s Releases**, and **release binaries** default to checking **`…/releases/latest/download/version.json`**. **Docker images** do **not** bake that update index—upgrade with **`docker pull`**. A local `make build-release` **without** `VERSION_DOWNLOAD_URL`, `ANNOUNCEMENT_URL`, and `UPDATE_INDEX_URL` matches **upstream script defaults**. **`version.txt`** is only `version=<tag>`; URLs live in **`version.json`**.
+- DNS 转发依赖 [`github.com/fcchbjm/dnsproxy`](https://github.com/fcchbjm/dnsproxy)（替代 [`github.com/AdguardTeam/dnsproxy`](https://github.com/AdguardTeam/dnsproxy)）；TLS/TCP、Keep-Alive、TFO、会话复用、入站 PPv2 等见该仓库说明。
+- **PPv2（DNS-over-TCP / DoT）**：YAML 中 `dns.tcp-proxy-protocol-v2`、`dns.tls-proxy-protocol-v2`、`dns.trusted_proxies`；开启须带合法 PPv2，关闭则不得带；DoT 顺序：PPv2 → TLS → DNS 分帧。
+- **发行与更新**：推送 `v*` 标签由本仓库 [GitHub Actions](.github/workflows/release-fcchbjm.yml) 发版时，**发行版二进制**默认从本仓库 **`releases/latest/download/version.json`** 检查更新，`version.json` 内下载与公告默认指向本仓库 Releases；**Docker 镜像**不注入该索引，请 **`docker pull`** 升级。本地 `make build-release` **未**设置 `VERSION_DOWNLOAD_URL`、`ANNOUNCEMENT_URL`、`UPDATE_INDEX_URL` 时与上游构建脚本默认一致。`version.txt` 仅 `version=<tag>`，URL 在 **`version.json`**。
 
-## Quick start
+## 快速开始
 
-### Option 1: Docker (good for a quick try)
+### 方式一：Docker（推荐用于快速验证）
 
-Image is published to GHCR by this repository’s GitHub Actions:
+由本仓库 GitHub Actions 发布至 GHCR：
 
 `ghcr.io/fcchbjm/adguardhome`
 
@@ -22,35 +22,35 @@ Image is published to GHCR by this repository’s GitHub Actions:
 docker pull ghcr.io/fcchbjm/adguardhome:latest
 ```
 
-### Option 2: Release binary
+### 方式二：Release 二进制
 
-Download the matching archive from [GitHub Releases](https://github.com/fcchbjm/AdGuardHome/releases). Prefer this for automated deployments over maintaining a full local build chain.
+从 [GitHub Releases](https://github.com/fcchbjm/AdGuardHome/releases) 下载与你的系统匹配的压缩包（自动化部署建议优先使用该方式）。
 
-### Option 3: Build from source
+### 方式三：从源码构建
 
-Build with Go (toolchain and commands are in the upstream **How to build** section below).
+使用 Go 构建（工具链与命令见下方上游 README 的 **How to build**）。
 
-## Change notes
+## 改动说明
 
-### Proxy Protocol v2 (PPv2)
+### Proxy Protocol v2（PPv2）
 
-DNS is often placed behind L4/L7 load balancers. Without transport-level client identity, AdGuard Home only sees the LB address, so per-client rate limiting, abuse attribution, and observability degrade. This fork implements **Proxy Protocol v2** on **DNS-over-TCP** and **DoT** listeners to restore real client semantics on the **LB → AdGuard Home** hop.
+DNS 常置于四层/七层负载均衡之后；若缺少传输层客户端身份，AdGuard Home 只能看到 LB 地址，按客户端维度的限流、滥用归因与观测会整体退化。本 fork 在 **DNS-over-TCP** 与 **DoT** 入口支持 **Proxy Protocol v2**，用于在 **LB → AdGuard Home** 链路上恢复真实客户端语义。
 
-**Strict semantics**
+**严格语义**
 
-- On listeners where PPv2 is **enabled**, connections **must** carry a valid PPv2 header or they are rejected.
-- On listeners where PPv2 is **disabled**, clients **must not** send PPv2 (avoids mixed direct/proxy behaviour).
-- **DoT**: PPv2 is parsed **before** the TLS handshake. Order: PPv2 → TLS → DNS-over-TCP framing.
+- 在 **已启用** PPv2 的监听上：连接 **必须** 携带合法 PPv2，否则拒绝。
+- 在 **未启用** PPv2 的监听上：**不得** 发送 PPv2，避免「部分直连、部分走代理」的语义漂移。
+- **DoT**：PPv2 在 **TLS 握手之前** 解析；顺序为 PPv2 → TLS → DNS-over-TCP 分帧。
 
-**Trust boundary**
+**信任边界**
 
-- Put **only** trusted LB/proxy CIDRs in `dns.trusted_proxies`.
-- Restrict the network (ACL/SG) so **only** those proxies can reach PPv2-enabled listeners.
-- **Do not** accept client-supplied PPv2 on a public edge (e.g. careless `accept-proxy`), or source-address spoofing becomes possible.
+- `dns.trusted_proxies` 仅填写 **可信 LB/代理** 所在 CIDR。
+- 在网络层（ACL/安全组）限制：**只有** 这些代理能访问启用 PPv2 的监听。
+- **勿**在公网入口对不可信客户端接受「由客户端提供的 PPv2」（例如边界 listener 上滥用 `accept-proxy`），否则等同于允许伪造源地址。
 
-**Topology (sketch)**
+**拓扑（示意）**
 
-PPv2 disabled:
+PPv2 未启用：
 
 ```text
 +--------+      +-------------------+      +------------------+
@@ -58,9 +58,9 @@ PPv2 disabled:
 +--------+      +-------------------+      +------------------+
 ```
 
-Note: AdGuard Home sees `remote addr` = LB address.
+说明：AdGuard Home 看到的 remote 地址为 **LB**。
 
-PPv2 enabled:
+PPv2 已启用：
 
 ```text
 +--------+      +-------------------+   send-proxy-v2 / PPv2   +------------------+      +--------------+
@@ -68,9 +68,9 @@ PPv2 enabled:
 +--------+      +-------------------+     (require PPv2)       +------------------+      +--------------+
 ```
 
-Note: Client → LB does **not** carry PPv2. PPv2 is injected by the LB on the **LB → AdGuard Home** backend connection.
+说明：**Client → LB** 不携带 PPv2；PPv2 由 LB 在 **LB → AdGuard Home** 的后端连接上注入。
 
-**YAML (AdGuard Home)**
+**YAML（AdGuard Home）**
 
 ```yaml
 dns:
@@ -80,35 +80,35 @@ dns:
     - 10.0.0.0/8
 ```
 
-**Reverse proxies**: Nginx stream uses `proxy_protocol` end-to-end; HAProxy uses `send-proxy-v2` toward AdGuard Home (DoT is often TLS passthrough); Envoy forwards PPv2 before TLS where applicable.
+**前置代理提示**：Nginx stream 使用 `proxy_protocol` 并保持到后端；HAProxy 对 AdGuard Home 的 server 行使用 `send-proxy-v2`（DoT 多为 TLS 透传）；Envoy 在适用时在 TLS 前透传 PPv2。
 
-**Minimal HAProxy fragment (DoT → local AdGuard Home)**
+**HAProxy 最小片段（DoT → 本机 AdGuard Home）**
 
 ```text
 backend bk_adguard_dot
   server adguardhome 127.0.0.1:853 send-proxy-v2
 ```
 
-Then enable `dns.tls-proxy-protocol-v2` (and `dns.tcp-proxy-protocol-v2` if needed). Follow HAProxy’s own docs for full syntax.
+启用后请在 AdGuard Home 中打开 `dns.tls-proxy-protocol-v2`（及按需 `dns.tcp-proxy-protocol-v2`）。具体 HAProxy 语法以官方文档为准。
 
 **DoQ / UDP**
 
-QUIC/UDP semantics differ from TCP/DoT. **PPv2 here is TCP/DoT only.** Broader discussion: [fcchbjm/dnsproxy](https://github.com/fcchbjm/dnsproxy) Discussions.
+QUIC/UDP 的语义与 TCP/DoT 不同；**当前 PPv2 仅覆盖 TCP/DoT**。更广泛的讨论见 [fcchbjm/dnsproxy](https://github.com/fcchbjm/dnsproxy) 的 Discussions。
 
-### DNS stack ([`fcchbjm/dnsproxy`](https://github.com/fcchbjm/dnsproxy))
+### DNS 转发栈（[`fcchbjm/dnsproxy`](https://github.com/fcchbjm/dnsproxy)）
 
-This fork replaces upstream `dnsproxy` with that module, so the **DNS proxy core** may differ from stock AdGuard Home: DoT-oriented TLS timeout behaviour, TCP keep-alive, TFO on DoT listeners (platform-dependent), TLS session resumption, RST/close-path hardening, robust reading of the **two-byte DNS-over-TCP length prefix** (reduces mis-framing on short reads), and more. **Flags, defaults, and CLI** are documented in the **dnsproxy** repo. AdGuard Home exposes integration-related settings via **`dns.*` YAML / the web UI** (e.g. PPv2 and `trusted_proxies`).
+本 fork 用该仓库替代官方 `dnsproxy`，因此 **DNS 代理内核** 的行为与上游 AdGuard Home 可能不同，包括但不限于：DoT 相关 TLS 超时语义、TCP Keep-Alive、DoT 监听侧 TFO（视平台）、TLS 会话恢复、复杂关闭路径下的 RST 处理、DNS-over-TCP/DoT 入口对 **两字节长度前缀的完整读取**（减轻 TCP 短读导致的偶发分帧问题）等。**完整开关、默认值与 CLI** 以 **dnsproxy 仓库说明** 为准。AdGuard Home 侧通过 **`dns.*` YAML / Web 配置** 暴露 PPv2 与 `trusted_proxies` 等与集成功能相关的项。
 
-### Releases & `version.json` (extra detail)
+### 发行与 `version.json`（补充）
 
-CI sets `VERSION_DOWNLOAD_URL`, `ANNOUNCEMENT_URL`, and `UPDATE_INDEX_URL` by default. Custom pipelines: see `scripts/make/build-release.sh` and `scripts/make/go-build.sh`. If you copy the workflow to another repository, update its `github.repository` guard. You need at least one GitHub **Release** for `latest` URLs to resolve reliably. Example shapes: `announcement_url` → `https://github.com/fcchbjm/AdGuardHome/releases/tag/<tag>`, `download_*` → `https://github.com/fcchbjm/AdGuardHome/releases/download/<tag>/<filename>`.
+CI 默认注入 `VERSION_DOWNLOAD_URL`、`ANNOUNCEMENT_URL`、`UPDATE_INDEX_URL`；自建发版见 `scripts/make/build-release.sh` 与 `scripts/make/go-build.sh`。复制工作流到其他仓库时请修改其中 `github.repository` 条件。GitHub 需存在 Release，`latest` 链接才稳定。发行包内示例：`announcement_url` 形如 `https://github.com/fcchbjm/AdGuardHome/releases/tag/<tag>`，`download_*` 形如 `https://github.com/fcchbjm/AdGuardHome/releases/download/<tag>/<文件名>`。
 
-### Feedback
+### 反馈
 
 - [Discussions](https://github.com/fcchbjm/AdGuardHome/discussions)
 - [Issues](https://github.com/fcchbjm/AdGuardHome/issues)
 
-Below is the upstream README content.
+以下为上游 `README.md` 原文（英文）。
 
 # AdguardTeam/AdGuardHome
 
