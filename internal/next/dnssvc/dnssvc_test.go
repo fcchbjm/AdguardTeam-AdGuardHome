@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/next/dnssvc"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/testutil"
+	"github.com/fcchbjm/AdGuardHome/internal/next/dnssvc"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 	"github.com/stretchr/testify/assert"

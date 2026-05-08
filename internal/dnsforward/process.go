@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/golibs/netutil"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )
@@ -230,7 +230,7 @@ func (s *Server) makeDDRResponse(req *dns.Msg) (resp *dns.Msg) {
 		// Only add DNS-over-TLS resolvers in case the certificate contains IP
 		// addresses.
 		//
-		// See https://github.com/AdguardTeam/AdGuardHome/issues/4927.
+		// See https://github.com/fcchbjm/AdGuardHome/issues/4927.
 		for _, addr := range s.dnsProxy.TLSListenAddr {
 			values := []dns.SVCBKeyValue{
 				&dns.SVCBAlpn{Alpn: []string{"dot"}},
@@ -378,7 +378,7 @@ func (s *Server) processDHCPAddrs(
 			Name:   q.Name,
 			Rrtype: dns.TypePTR,
 			// TODO(e.burkov):  Use [dhcpsvc.Lease.Expiry].  See
-			// https://github.com/AdguardTeam/AdGuardHome/issues/3932.
+			// https://github.com/fcchbjm/AdGuardHome/issues/3932.
 			Ttl:   s.dnsFilter.BlockedResponseTTL(),
 			Class: dns.ClassINET,
 		},

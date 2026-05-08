@@ -4,7 +4,7 @@ import (
 	"net/netip"
 	"testing"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
 	"github.com/stretchr/testify/assert"
 )
 

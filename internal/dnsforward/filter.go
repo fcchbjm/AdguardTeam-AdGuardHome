@@ -8,8 +8,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
 	"github.com/AdguardTeam/urlfilter/rules"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
 	"github.com/miekg/dns"
 )
 

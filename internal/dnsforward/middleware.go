@@ -6,10 +6,10 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/syncutil"
 	"github.com/AdguardTeam/golibs/timeutil"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
 	"github.com/fcchbjm/dnsproxy/proxy"
 	"github.com/miekg/dns"
 )

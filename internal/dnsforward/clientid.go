@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/client"
 	"github.com/AdguardTeam/golibs/netutil"
+	"github.com/fcchbjm/AdGuardHome/internal/client"
 	"github.com/fcchbjm/dnsproxy/proxy"
 )
 

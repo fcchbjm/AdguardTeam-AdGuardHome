@@ -12,21 +12,21 @@ import (
 	"sync"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtls"
-	"github.com/AdguardTeam/AdGuardHome/internal/configmigrate"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpd"
-	"github.com/AdguardTeam/AdGuardHome/internal/dnsforward"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/querylog"
-	"github.com/AdguardTeam/AdGuardHome/internal/schedule"
-	"github.com/AdguardTeam/AdGuardHome/internal/stats"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/logutil/slogutil"
 	"github.com/AdguardTeam/golibs/netutil"
 	"github.com/AdguardTeam/golibs/timeutil"
+	"github.com/fcchbjm/AdGuardHome/internal/agh"
+	"github.com/fcchbjm/AdGuardHome/internal/aghalg"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
+	"github.com/fcchbjm/AdGuardHome/internal/aghtls"
+	"github.com/fcchbjm/AdGuardHome/internal/configmigrate"
+	"github.com/fcchbjm/AdGuardHome/internal/dhcpd"
+	"github.com/fcchbjm/AdGuardHome/internal/dnsforward"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
+	"github.com/fcchbjm/AdGuardHome/internal/querylog"
+	"github.com/fcchbjm/AdGuardHome/internal/schedule"
+	"github.com/fcchbjm/AdGuardHome/internal/stats"
 	"github.com/fcchbjm/dnsproxy/fastip"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/renameio/v2/maybe"
@@ -506,8 +506,8 @@ var config = &configuration{
 
 			// set default maximum concurrent queries to 300
 			// we introduced a default limit due to this:
-			// https://github.com/AdguardTeam/AdGuardHome/issues/2015#issuecomment-674041912
-			// was later increased to 300 due to https://github.com/AdguardTeam/AdGuardHome/issues/2257
+			// https://github.com/fcchbjm/AdGuardHome/issues/2015#issuecomment-674041912
+			// was later increased to 300 due to https://github.com/fcchbjm/AdGuardHome/issues/2257
 			MaxGoroutines: 300,
 		},
 		UpstreamTimeout:  timeutil.Duration(dnsforward.DefaultTimeout),

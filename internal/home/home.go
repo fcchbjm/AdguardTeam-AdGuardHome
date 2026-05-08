@@ -19,24 +19,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/AdguardTeam/AdGuardHome/internal/agh"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghalg"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghhttp"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghnet"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghos"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghslog"
-	"github.com/AdguardTeam/AdGuardHome/internal/aghtls"
-	"github.com/AdguardTeam/AdGuardHome/internal/arpdb"
-	"github.com/AdguardTeam/AdGuardHome/internal/dhcpd"
-	"github.com/AdguardTeam/AdGuardHome/internal/dnsforward"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/hashprefix"
-	"github.com/AdguardTeam/AdGuardHome/internal/filtering/safesearch"
-	"github.com/AdguardTeam/AdGuardHome/internal/permcheck"
-	"github.com/AdguardTeam/AdGuardHome/internal/querylog"
-	"github.com/AdguardTeam/AdGuardHome/internal/stats"
-	"github.com/AdguardTeam/AdGuardHome/internal/updater"
-	"github.com/AdguardTeam/AdGuardHome/internal/version"
 	"github.com/AdguardTeam/golibs/errors"
 	"github.com/AdguardTeam/golibs/hostsfile"
 	"github.com/AdguardTeam/golibs/log"
@@ -45,6 +27,24 @@ import (
 	"github.com/AdguardTeam/golibs/netutil/urlutil"
 	"github.com/AdguardTeam/golibs/osutil"
 	"github.com/AdguardTeam/golibs/osutil/executil"
+	"github.com/fcchbjm/AdGuardHome/internal/agh"
+	"github.com/fcchbjm/AdGuardHome/internal/aghalg"
+	"github.com/fcchbjm/AdGuardHome/internal/aghhttp"
+	"github.com/fcchbjm/AdGuardHome/internal/aghnet"
+	"github.com/fcchbjm/AdGuardHome/internal/aghos"
+	"github.com/fcchbjm/AdGuardHome/internal/aghslog"
+	"github.com/fcchbjm/AdGuardHome/internal/aghtls"
+	"github.com/fcchbjm/AdGuardHome/internal/arpdb"
+	"github.com/fcchbjm/AdGuardHome/internal/dhcpd"
+	"github.com/fcchbjm/AdGuardHome/internal/dnsforward"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering/hashprefix"
+	"github.com/fcchbjm/AdGuardHome/internal/filtering/safesearch"
+	"github.com/fcchbjm/AdGuardHome/internal/permcheck"
+	"github.com/fcchbjm/AdGuardHome/internal/querylog"
+	"github.com/fcchbjm/AdGuardHome/internal/stats"
+	"github.com/fcchbjm/AdGuardHome/internal/updater"
+	"github.com/fcchbjm/AdGuardHome/internal/version"
 	"github.com/fcchbjm/dnsproxy/upstream"
 )
 
@@ -1096,7 +1096,7 @@ Please note that this is crucial for a server to be able to use privileged ports
 You have two options:
 1. Run AdGuard Home with root privileges.
 2. On Linux you can grant the CAP_NET_BIND_SERVICE capability:
-https://github.com/AdguardTeam/AdGuardHome/wiki/Getting-Started#running-without-superuser`
+https://github.com/fcchbjm/AdGuardHome/wiki/Getting-Started#running-without-superuser`
 
 // checkNetworkPermissions checks if the current user permissions are enough to
 // use the required networking functionality.  l must not be nil.

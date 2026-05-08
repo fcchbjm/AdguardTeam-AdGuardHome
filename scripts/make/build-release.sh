@@ -340,9 +340,9 @@ readonly version_download_url version_json
 if [ "${ANNOUNCEMENT_URL:-}" != '' ]; then
 	announcement_url="${ANNOUNCEMENT_URL}"
 elif [ "$channel" = 'edge' ]; then
-	announcement_url='https://github.com/AdguardTeam/AdGuardHome/wiki/Platforms'
+	announcement_url='https://github.com/fcchbjm/AdGuardHome/wiki/Platforms'
 else
-	announcement_url="https://github.com/AdguardTeam/AdGuardHome/releases/tag/${version}"
+	announcement_url="https://github.com/fcchbjm/AdGuardHome/releases/tag/${version}"
 fi
 readonly announcement_url
 
